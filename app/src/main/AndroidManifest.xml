@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -11,30 +12,37 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MemeAPI"
-        tools:targetApi="31">
+        tools:targetApi="33">
         <activity
-            android:name=".CrearMemeActivity"
+            android:name=".pages.MostrarMemeActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".CrearTagActivity"
+            android:name=".pages.CrearMemeActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ListaMemesActivity"
+            android:name=".pages.CrearTagActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ObtenerMemeIDActivity"
+            android:name=".pages.ListaMemesActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".pages.ObtenerMemeIDActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

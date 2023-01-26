@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#95b8f6"
+    tools:context=".pages.MostrarMemeActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="630dp"
+        app:layout_constraintBottom_toTopOf="@+id/cvListarMemes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/imgMeme"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:srcCompat="@android:drawable/stat_notify_error" />
+
+        <TextView
+            android:id="@+id/txtSuperior"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:textSize="40dp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:layout_marginBottom="544dp"
+            android:textColor="#000000"
+            android:shadowColor="#FFFFFF"
+            android:shadowRadius="28"
+            android:shadowDx="3"
+            android:shadowDy="3"
+            tools:text="HOLA" />
+
+        <TextView
+            android:id="@+id/txtInferior"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="555dp"
+            android:paddingBottom="10dp"
+            tools:text="txtInferior"
+            android:textSize="40dp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:shadowColor="#FFFFFF"
+            android:shadowRadius="28"
+            android:shadowDx="3"
+            android:shadowDy="3"
+            android:textAlignment="center" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="155dp"
+            android:layout_marginTop="255dp"
+            android:layout_marginStart="355dp"
+            />
+
+
+    </RelativeLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvListarMemes"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_margin="0dp"
+        android:textAlignment="center"
+        app:cardBackgroundColor="#FFFF99"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="10dp"
+        app:cardMaxElevation="12dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="MissingConstraints">
+
+        <Button
+            android:id="@+id/btnVolver"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="#fffff9"
+            android:gravity="center"
+            android:onClick="btnVolver"
+            android:text="Volver"
+            android:textColor="#000000" />
+
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

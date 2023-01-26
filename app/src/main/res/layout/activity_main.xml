@@ -31,11 +31,11 @@
             android:id="@+id/btnListarMemes"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background=""
+            android:backgroundTint="#fffff9"
             android:gravity="center"
             android:onClick="btnListarMemes"
             android:text="Listar memes"
-            android:textColor="@color/black" />
+            android:textColor="#000000" />
 
     </androidx.cardview.widget.CardView>
 
@@ -63,11 +63,11 @@
             android:id="@+id/btnMemeID"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background=""
+            android:backgroundTint="#fffff9"
             android:gravity="center"
             android:onClick="btnMemeID"
             android:text="Obtener meme por ID"
-            android:textColor="@color/black" />
+            android:textColor="#000000" />
 
     </androidx.cardview.widget.CardView>
 
@@ -95,11 +95,11 @@
             android:id="@+id/btnCrearTag"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background=""
+            android:backgroundTint="#fffff9"
             android:gravity="center"
             android:onClick="btnCrearTag"
             android:text="Crear TAG"
-            android:textColor="@color/black" />
+            android:textColor="#000000" />
 
     </androidx.cardview.widget.CardView>
 
@@ -127,11 +127,11 @@
             android:id="@+id/btnCrearMeme"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background=""
+            android:backgroundTint="#fffff9"
             android:gravity="center"
             android:onClick="btnCrearMeme"
             android:text="Crear Meme"
-            android:textColor="@color/black" />
+            android:textColor="#000000" />
 
     </androidx.cardview.widget.CardView>
 
