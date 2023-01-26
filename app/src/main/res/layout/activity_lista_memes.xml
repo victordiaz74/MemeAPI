@@ -40,8 +40,9 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMemes"
-        android:layout_width="409dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="120dp"
         android:layout_marginStart="1dp"
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="276dp"
@@ -85,11 +86,12 @@
     </androidx.cardview.widget.CardView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/btnSiguiente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="198dp"
         android:layout_marginBottom="2dp"
+        android:onClick="btnSiguiente"
         android:clickable="true"
         app:layout_constraintBottom_toTopOf="@+id/cvVolver1"
         app:layout_constraintEnd_toEndOf="parent"
