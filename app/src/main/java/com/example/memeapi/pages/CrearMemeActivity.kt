@@ -58,25 +58,28 @@ class CrearMemeActivity : AppCompatActivity() {
 
     fun crearMeme() {
         if(datosRellenos()) {
-
             MemeRetrofitInstance.api.postMeme("/meme", Meme(
                 binding.textoNombreMeme.text.toString(),
                 binding.txtSuperiorEdit.text.toString(),
                 binding.txtInferiorEdit.text.toString(),
                 binding.txtUrl.text.toString(),
-                binding.spinnerTags.toString()
-            )
-            )
-                .enqueue(object : Callback<MemeResponse> {
+                binding.txtTags.text.toString()
+                //binding.spinnerTags.toString()
+            )) .enqueue(object : Callback<MemeResponse> {
                     override fun onResponse(call: Call<MemeResponse>,response: Response<MemeResponse>) {
+                        Log.d("TAG", "HA LLEGADOOOOO")
+
                         if (response.body() != null) {
-                            intent = Intent(applicationContext, MostrarMemeActivity::class.java).apply {
+
+                            intent = Intent(applicationContext, com.example.memeapi.pages.MostrarMemeActivity::class.java).apply {
                                 putExtra("id", response.body()!!.idMeme.toString())
                             }
+                            Log.d("Id: ", response.body()!!.idMeme.toString())
 
                             startActivity(intent)
-                        }
-                        else {
+                        } else {
+                            Log.d("TAG", "pitou")
+                            Log.d("Id: ", response.body()!!.idMeme.toString())
                             return
                         }
                     }
@@ -85,18 +88,17 @@ class CrearMemeActivity : AppCompatActivity() {
                         Log.d("TAG", t.message.toString())
                     }
                 })
-        }
-        else {
+        } else {
             Toast.makeText(this, "Parece que faltan campos por rellenar", Toast.LENGTH_SHORT).show()
         }
     }
 
     fun datosRellenos(): Boolean {
-        return  !(binding.textoNombreMeme.text.equals("") &&
+        return  !((binding.textoNombreMeme.text.equals("") &&
                 binding.txtSuperiorEdit.text.equals("") &&
                 binding.txtInferiorEdit.text.equals("") &&
                 binding.txtUrl.text.equals("")) &&
-                binding.spinnerTags.equals("")
+                binding.txtTags.text.equals(""))
     }
 
 

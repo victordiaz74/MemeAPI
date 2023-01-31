@@ -38,8 +38,8 @@ class MostrarMemeActivity : AppCompatActivity() {
             .enqueue(object : Callback<MemeResponse>{
                 override fun onResponse(call: Call<MemeResponse>, response: Response<MemeResponse>){
                     if (response.body() != null){
-                        binding.txtInferior.text = response.body()!!.txtInf
-                        binding.txtSuperior.text = response.body()!!.txtSup
+                        binding.txtInferiorEdit.text = response.body()!!.txtInf
+                        binding.txtSuperiorEdit.text = response.body()!!.txtSup
 
                         var url = response.body()!!.url
 

@@ -29,7 +29,7 @@ class CrearTagActivity : AppCompatActivity() {
 
     fun crearTag(){
         var nombre = binding.textoNombreTag.text.toString()
-        if (nombre.equals("")){
+        if (!nombre.equals("")){
             MemeRetrofitInstance.api.postTag("/tag", Tag(nombre))
                 .enqueue(object : Callback<TagResponse>{
                     override fun onResponse(call: Call<TagResponse>, response: Response<TagResponse>) {
