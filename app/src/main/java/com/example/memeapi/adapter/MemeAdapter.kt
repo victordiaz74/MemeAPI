@@ -57,4 +57,23 @@ class MemeAdapter(private val onClickListener: (Int) -> Unit): RecyclerView.Adap
 
         notifyDataSetChanged()
     }
+
+    fun atras5() {
+        pos -= 5
+
+        MemeRetrofitInstance.api.getMemes("/meme/list?count=5&page=$pos")
+            .enqueue(object : Callback<List<MemeResponse>> {
+                override fun onResponse(call: Call<List<MemeResponse>>, response: Response<List<MemeResponse>>) {
+                    if (response.body() != null) {
+                        memes = response.body()!!
+                    }
+                }
+
+                override fun onFailure(call: Call<List<MemeResponse>>, t: Throwable) {
+                    Log.d("Fallo del rv", t.message.toString())
+                }
+            })
+
+        notifyDataSetChanged()
+    }
 }

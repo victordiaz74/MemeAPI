@@ -31,6 +31,11 @@ class ListaMemesActivity : AppCompatActivity() {
         binding.btnSiguiente.setOnClickListener{
             memeAdapter.siguientes5()
         }
+
+        binding.btnAtras.setOnClickListener{
+            memeAdapter.atras5()
+        }
+
         setContentView(binding.root)
     }
 
