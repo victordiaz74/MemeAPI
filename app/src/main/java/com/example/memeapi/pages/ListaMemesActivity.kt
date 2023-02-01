@@ -17,31 +17,34 @@ class ListaMemesActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityListaMemesBinding
     private lateinit var memeAdapter: MemeAdapter
+    private var pos = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityListaMemesBinding.inflate(layoutInflater)
 
-        initRecycler()
+        initRecycler(pos)
 
         binding.btnVolver1.setOnClickListener{
             volver()
         }
 
         binding.btnSiguiente.setOnClickListener{
-            memeAdapter.siguientes5()
+            siguientes5()
         }
 
         binding.btnAtras.setOnClickListener{
-            memeAdapter.atras5()
+            atras5()
         }
 
         setContentView(binding.root)
     }
 
-    fun initRecycler() {
 
-        MemeRetrofitInstance.api.getMemes("/meme/list")
+
+    fun initRecycler(pos: Int) {
+
+        MemeRetrofitInstance.api.getMemes("/meme/list?count=5&page=$pos")
             .enqueue(object : Callback<List<MemeResponse>>{
                 override fun onResponse(call: Call<List<MemeResponse>>, response: Response<List<MemeResponse>>) {
                     if(response.body() != null){
@@ -62,6 +65,21 @@ class ListaMemesActivity : AppCompatActivity() {
                     Log.d("Error en el rv: ", t.message.toString())
                 }
             })
+    }
+
+    fun siguientes5() {
+        pos+=5
+        initRecycler(pos)
+    }
+
+    fun atras5() {
+        if(pos == 0){
+
+        }else{
+            pos-=5
+            initRecycler(pos)
+        }
+
     }
 
     fun dameMeme(id: Int){
