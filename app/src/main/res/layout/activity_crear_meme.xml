@@ -127,16 +127,7 @@
             android:layout_marginBottom="20dp"
             android:background="#f9d99a" />
 
-        <EditText
-            android:id="@+id/txtTags"
-            android:layout_width="193dp"
-            android:layout_height="48dp"
-            android:layout_gravity="right|center_vertical"
-            android:layout_margin="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:background="#f9d99a"
-            android:hint="Introduce tag del meme" />
+
 
         <TextView
             android:id="@+id/labelTags"

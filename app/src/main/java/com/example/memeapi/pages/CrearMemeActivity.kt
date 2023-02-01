@@ -32,7 +32,7 @@ class CrearMemeActivity : AppCompatActivity() {
     }
 
     fun pedirTags() {
-        MemeRetrofitInstance.api.getTags("/tags")
+        MemeRetrofitInstance.api.getTags("/tag")
             .enqueue(object : Callback<List<TagResponse>>{
                 override fun onResponse(call: Call<List<TagResponse>>, response: Response<List<TagResponse>>) {
                     if(response.body() != null){
@@ -41,7 +41,7 @@ class CrearMemeActivity : AppCompatActivity() {
                 }
 
                 override fun onFailure(call: Call<List<TagResponse>>, t: Throwable) {
-
+                    Log.d("TAG", t.message.toString())
                 }
 
             })
@@ -53,7 +53,7 @@ class CrearMemeActivity : AppCompatActivity() {
             listaTags.add(t.texto)
         }
 
-        binding.spinnerTags.adapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, listaTags)
+        binding.spinnerTags.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, listaTags)
     }
 
     fun crearMeme() {
@@ -63,22 +63,17 @@ class CrearMemeActivity : AppCompatActivity() {
                 binding.txtSuperiorEdit.text.toString(),
                 binding.txtInferiorEdit.text.toString(),
                 binding.txtUrl.text.toString(),
-                binding.txtTags.text.toString()
-                //binding.spinnerTags.toString()
+                binding.spinnerTags.toString()
             )) .enqueue(object : Callback<MemeResponse> {
                     override fun onResponse(call: Call<MemeResponse>,response: Response<MemeResponse>) {
-                        Log.d("TAG", "HA LLEGADOOOOO")
-
                         if (response.body() != null) {
 
                             intent = Intent(applicationContext, com.example.memeapi.pages.MostrarMemeActivity::class.java).apply {
                                 putExtra("id", response.body()!!.idMeme.toString())
                             }
-                            Log.d("Id: ", response.body()!!.idMeme.toString())
 
                             startActivity(intent)
                         } else {
-                            Log.d("TAG", "pitou")
                             Log.d("Id: ", response.body()!!.idMeme.toString())
                             return
                         }
@@ -97,8 +92,7 @@ class CrearMemeActivity : AppCompatActivity() {
         return  !((binding.textoNombreMeme.text.equals("") &&
                 binding.txtSuperiorEdit.text.equals("") &&
                 binding.txtInferiorEdit.text.equals("") &&
-                binding.txtUrl.text.equals("")) &&
-                binding.txtTags.text.equals(""))
+                binding.txtUrl.text.equals("")))
     }
 
 
