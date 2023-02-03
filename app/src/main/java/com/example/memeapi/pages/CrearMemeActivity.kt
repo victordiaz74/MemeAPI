@@ -10,7 +10,6 @@ import com.example.memeapi.api.MemeRetrofitInstance
 import com.example.memeapi.databinding.ActivityCrearMemeBinding
 import com.example.memeapi.entidades.Meme
 import com.example.memeapi.entidades.MemeResponse
-import com.example.memeapi.entidades.Tag
 import com.example.memeapi.entidades.TagResponse
 import retrofit2.*
 
@@ -50,7 +49,7 @@ class CrearMemeActivity : AppCompatActivity() {
     fun rellenarSpinner(body: List<TagResponse>) {
         var listaTags = ArrayList<String>()
         for (t in body){
-            listaTags.add(t.texto)
+            listaTags.add(t.idTag.toString() + "-" + t.texto )
         }
 
         binding.spinnerTags.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, listaTags)
@@ -58,23 +57,25 @@ class CrearMemeActivity : AppCompatActivity() {
 
     fun crearMeme() {
         if(datosRellenos()) {
+            var itemSeleccionado = binding.spinnerTags.selectedItem.toString().split("-");
+            var idSeleccionado = itemSeleccionado[0]
+
             MemeRetrofitInstance.api.postMeme("/meme", Meme(
                 binding.textoNombreMeme.text.toString(),
                 binding.txtSuperiorEdit.text.toString(),
                 binding.txtInferiorEdit.text.toString(),
                 binding.txtUrl.text.toString(),
-                binding.spinnerTags.toString()
+                idSeleccionado
             )) .enqueue(object : Callback<MemeResponse> {
                     override fun onResponse(call: Call<MemeResponse>,response: Response<MemeResponse>) {
                         if (response.body() != null) {
 
-                            intent = Intent(applicationContext, com.example.memeapi.pages.MostrarMemeActivity::class.java).apply {
+                            intent = Intent(applicationContext, MostrarMemeActivity::class.java).apply {
                                 putExtra("id", response.body()!!.idMeme.toString())
                             }
 
                             startActivity(intent)
                         } else {
-                            Log.d("Id: ", response.body()!!.idMeme.toString())
                             return
                         }
                     }
